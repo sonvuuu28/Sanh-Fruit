@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sành Fruit — Trái Cây Mix Thuần Việt</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #1a4a2e;
+    --green-mid:    #2d6e45;
+    --gold-bright:  #ffd166;
+    --gold-mid:     #e8a020;
+    --cream-base:   #f7f2ea;
+    --cream-warm:   #fff8ec;
+    --cream-border: #e8ddd0;
+    --chip-bg:      #f0f9f3;
+    --chip-border:  #c5e6d0;
+    --chip-text:    #1a5c33;
+    --choice-bg:    #fdf5e6;
+    --choice-bdr:   #f0d99a;
+    --choice-text:  #7a5500;
+    --text-main:    #2d2218;
+    --text-muted:   #9a8a72;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream-base);
+    color: var(--text-main);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ── HERO BANNER (ĐẦY ĐỦ ẢNH OVERVIEW) ──────────────── */
+  .hero {
+    background-color: var(--green-dark);
+    padding: 28px 16px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--gold-bright);
+  }
+  .hero-tagline {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    max-width: 320px;
+    margin: 0 auto 16px;
+  }
+  .hero-img {
+    width: 100%;
+    max-width: 440px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* ── SECTION CHUNG ────────────────────────────────── */
+  .section {
+    padding: 20px 16px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  /* ── DANH MỤC TRÁI CÂY (TAG CLOUD) ────────────────── */
+  .fruit-box {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--cream-border);
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  .box-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+  .fruit-pool {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+  .fruit-tag {
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    color: var(--chip-text);
+    font-size: 11.5px;
+    padding: 3px 9px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+  .fruit-tag.more {
+    background: transparent;
+    border: 1px dashed var(--text-muted);
+    color: var(--text-muted);
+  }
+
+  /* ── SLIDER TRƯỢT NGANG (XỬ LÝ 3 HÌNH SẢN PHẨM) ────── */
+  .slider-container {
+    margin: 0 -16px; /* Tràn viền hai bên điện thoại tạo cảm giác vô cực */
+    padding: 4px 16px 12px;
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Giúp lướt mượt trên iOS */
+  }
+  
+  /* Ẩn thanh cuộn xấu xí trên các trình duyệt */
+  .slider-container::-webkit-scrollbar { display: none; }
+  .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .pkg-card {
+    scroll-snap-align: center;
+    flex: 0 0 260px; /* Độ rộng cố định vừa vặn màn hình dọc mobile */
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--cream-border);
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(45,34,24,0.03);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .pkg-card.featured {
+    border: 2px solid var(--gold-mid);
+  }
+
+  .pkg-img-wrap {
+    width: 100%;
+    height: 140px;
+    position: relative;
+    background: var(--cream-base);
+  }
+
+  .pkg-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pkg-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--gold-mid);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+
+  .pkg-body {
+    padding: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pkg-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 2px;
+  }
+
+  .pkg-sub {
+    font-size: 11px;
+    color: var(--choice-text);
+    background: var(--choice-bg);
+    border: 1px solid var(--choice-bdr);
+    padding: 1px 6px;
+    border-radius: 4px;
+    width: fit-content;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .pkg-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-top: 1px dashed var(--cream-border);
+    padding-top: 8px;
+  }
+
+  .pkg-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1;
+  }
+
+  .pkg-unit {
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .pkg-hint {
+    font-size: 11px;
+    color: var(--green-mid);
+    font-weight: 600;
+  }
+
+  .swipe-indicator {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: -6px;
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+
+  /* ── LUỒNG ĐẶT HÀNG COMPACT ──────────────────────── */
+  .how-box {
+    background: var(--green-dark);
+    border-radius: 14px;
+    padding: 16px 12px;
+    color: #fff;
+  }
+  .how-box .section-title {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+  }
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .flow-step {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .flow-num {
+    background: var(--gold-bright);
+    color: var(--green-dark);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 11px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .flow-text div {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .flow-text p {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.3;
+  }
+
+  /* ── LIÊN HỆ GỌN GÀNG ────────────────────────────── */
+  .contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid var(--cream-border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .btn-main-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-icon { font-size: 18px; }
+  .btn-label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .btn-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+  .btn-arrow { color: var(--text-muted); font-size: 12px; }
+
+  /* ── FOOTER MINI ──────────────────────────────────── */
+  footer {
+    background: var(--green-dark);
+    padding: 16px;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  footer em { color: var(--gold-bright); font-style: italic; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>Sành <em>Fruit</em></h1>
+  <p class="hero-tagline">Hộp mix trái cây tươi thuần Việt. Quý khách tự chọn loại, shop đóng hộp và giao tận nơi.</p>
+  <img src="../../images/overview.jpg" class="hero-img" alt="Tổng quan Sành Fruit">
+</section>
+
+<div class="section">
+  <h2 class="section-title">Thực đơn chọn gói</h2>
+  
+  <div class="fruit-box">
+    <div class="box-title">Trái cây theo mùa quý khách tự chọn:</div>
+    <div class="fruit-pool">
+      <span class="fruit-tag">🍈 Ổi</span>
+      <span class="fruit-tag">🥭 Xoài</span>
+      <span class="fruit-tag">🍉 Dưa Hấu</span>
+      <span class="fruit-tag">🍑 Mận</span>
+      <span class="fruit-tag">🐉 Thanh Long</span>
+      <span class="fruit-tag more">...và các loại theo mùa</span>
+    </div>
+  </div>
+
+  <div class="slider-container">
+    
+    <div class="pkg-card">
+      <div class="pkg-img-wrap">
+        <img src="../../images/3-mon.jpg" alt="Mix 3 Loại">
+      </div>
+      <div class="pkg-body">
+        <div>
+          <div class="pkg-name">Mix 3 Loại</div>
+          <div class="pkg-sub">Tự chọn 3 loại quả</div>
+        </div>
+        <div class="pkg-footer">
+          <div>
+            <div class="pkg-price">30.000đ</div>
+            <div class="pkg-unit">/ hộp tươi</div>
+          </div>
+          <span class="pkg-hint">Chọn gói này ➔</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="pkg-img-wrap">
+        <span class="pkg-badge">Yêu thích</span>
+        <img src="../../images/4-mon.jpg" alt="Mix 4 Loại">
+      </div>
+      <div class="pkg-body">
+        <div>
+          <div class="pkg-name">Mix 4 Loại ⭐</div>
+          <div class="pkg-sub" style="background: var(--gold-bright); border-color: var(--gold-mid);">Phổ biến nhất</div>
+        </div>
+        <div class="pkg-footer">
+          <div>
+            <div class="pkg-price">35.000đ</div>
+            <div class="pkg-unit">/ hộp tươi</div>
+          </div>
+          <span class="pkg-hint" style="color: var(--gold-mid)">Chọn gói này ➔</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-img-wrap">
+        <img src="../../images/5-mon.jpg" alt="Mix 5 Loại">
+      </div>
+      <div class="pkg-body">
+        <div>
+          <div class="pkg-name">Mix 5 Loại</div>
+          <div class="pkg-sub">Tự chọn 5 loại quả</div>
+        </div>
+        <div class="pkg-footer">
+          <div>
+            <div class="pkg-price">40.000đ</div>
+            <div class="pkg-unit">/ hộp tươi</div>
+          </div>
+          <span class="pkg-hint">Chọn gói này ➔</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="swipe-indicator">⟨ Vuốt sang trái / phải để xem các gói ⟩</div>
+</div>
+
+<div class="section" style="padding-top: 0;">
+  <div class="how-box">
+    <h2 class="section-title">Luồng đặt hàng đơn giản</h2>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-text">
+          <div>Chọn gói</div>
+          <p>Mix 3, 4 hoặc 5 loại</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-text">
+          <div>Nhắn tin</div>
+          <p>Qua Zalo/Instagram</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-text">
+          <div>Xác nhận</div>
+          <p>& hẹn giờ giao</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-text">
+          <div>Nhận hàng</div>
+          <p>Trái cây tươi mát</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="padding-top: 0;">
+  <h2 class="section-title">Đặt hàng qua nhắn tin</h2>
+  <div class="contact-box">
+    <a class="btn-contact" href="https://zalo.me/0342661892">
+      <div class="btn-main-info">
+        <span class="btn-icon">💬</span>
+        <div>
+          <div class="btn-label">Zalo đặt hàng</div>
+          <div class="btn-val">0342 661 892</div>
+        </div>
+      </div>
+      <span class="btn-arrow">➔</span>
+    </a>
+    
+    <a class="btn-contact" href="https://www.instagram.com/sanhfruit_mlem?igsh=MXRvdnh5OW8xc2Q2aA==">
+      <div class="btn-main-info">
+        <span class="btn-icon">📸</span>
+        <div>
+          <div class="btn-label">Instagram DM</div>
+          <div class="btn-val">@sanhfruit_mlem</div>
+        </div>
+      </div>
+      <span class="btn-arrow">➔</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div style="font-weight: 600; color: #fff; margin-bottom: 4px;">Sành <em>Fruit</em></div>
+  <p>Giờ nhận đơn: 7:00 – 20:00 hàng ngày</p>
+  <p style="margin-top: 4px; font-size: 10px; color: rgba(255,255,255,0.3)">Trái cây thuần Việt — Tươi mát, tự nhiên, tận tâm</p>
+</footer>
+
+</body>
+</html>
