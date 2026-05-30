@@ -41,7 +41,7 @@
     position: relative;
     background: var(--green-dark);
     text-align: center;
-    padding: 50px 20px 40px;
+    padding: 55px 20px 45px;
     overflow: hidden;
   }
   
@@ -49,7 +49,7 @@
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.25; /* Làm mờ ảnh để nổi bật chữ nghệ thuật */
+    opacity: 0.25;
     z-index: 1;
   }
 
@@ -94,7 +94,7 @@
   .menu-wrapper {
     max-width: 450px;
     margin: 0 auto;
-    padding: 32px 20px;
+    padding: 36px 20px 20px;
   }
 
   .menu-section-title {
@@ -107,7 +107,7 @@
     position: relative;
   }
 
-  /* DANH MỤC QUẢ (HIỂN THỊ DẠNG CHỮ GẠCH CHÂN NHẸ) */
+  /* DANH MỤC QUẢ */
   .seasonal-fruits {
     text-align: center;
     font-size: 12.5px;
@@ -135,13 +135,11 @@
     gap: 16px;
   }
 
-  /* Ảnh tròn nhỏ gọn bên góc dòng món ăn */
   .menu-item-thumb {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid var(--cream-border);
     flex-shrink: 0;
   }
 
@@ -195,7 +193,6 @@
     line-height: 1.4;
   }
 
-  /* Điểm nhấn tinh tế cho món bán chạy */
   .menu-item.featured .menu-item-name {
     color: var(--green-mid);
   }
@@ -207,26 +204,35 @@
     top: -2px; right: -6px;
   }
 
-  /* ── LUỒNG ĐẶT HÀNG TRÊN MENU GIẤY ────────────────── */
+  /* ĐƯỜNG PHÂN CÁCH GIỮA CÁC PHẦN LỚN */
+  .section-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(232, 221, 208, 0), rgba(232, 221, 208, 1), rgba(232, 221, 208, 0));
+    margin: 44px auto;
+    max-width: 80%;
+  }
+
+  /* ── LUỒNG ĐẶT HÀNG TÁCH BIỆT ────────────────────── */
   .menu-guide {
-    margin-top: 44px;
-    border-top: 1px solid var(--cream-border);
-    padding-top: 28px;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   .guide-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-style: italic;
     color: var(--green-dark);
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .guide-steps {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 0 12px;
   }
 
@@ -243,24 +249,25 @@
     color: var(--green-dark);
   }
 
-  /* ── KHU VỰC LIÊN HỆ DẠNG THƯ PHÁP/CHỮ KHÔNG CARD ── */
+  /* ── KHU VỰC LIÊN HỆ TÁCH BIỆT ──────────────────── */
   .menu-contact {
+    max-width: 450px;
+    margin: 0 auto;
     text-align: center;
-    margin-top: 40px;
-    padding-bottom: 12px;
+    padding: 0 20px 44px;
   }
 
   .contact-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     color: var(--green-dark);
-    margin-bottom: 14px;
+    margin-bottom: 18px;
   }
 
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     align-items: center;
   }
 
@@ -286,7 +293,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* ── FOOTER ĐƠN SẮC TỐI GIẢN ──────────────────────── */
+  /* ── FOOTER ──────────────────────────────────────── */
   footer {
     background: var(--green-dark);
     color: rgba(255, 255, 255, 0.6);
@@ -324,7 +331,6 @@
 </section>
 
 <main class="menu-wrapper">
-  
   <h2 class="menu-section-title">Hộp Trái Cây Mix</h2>
   
   <div class="seasonal-fruits">
@@ -333,12 +339,11 @@
   </div>
 
   <div class="menu-list">
-    
     <div class="menu-item">
-      <img src="../../images/3-mon.jpg" class="menu-item-thumb" alt="Gói Mix 3 Loại">
+      <img src="../../images/3-mon.png" class="menu-item-thumb" alt="Gói Mix 3 Loại">
       <div class="menu-item-details">
         <div class="menu-item-head">
-          <span class="menu-item-name">Mix 3 Loại Quả</span>
+          <span class="menu-item-name">Mix 3 Giản Đơn</span>
           <span class="menu-item-dots"></span>
           <span class="menu-item-price">30.000đ</span>
         </div>
@@ -347,10 +352,10 @@
     </div>
 
     <div class="menu-item featured">
-      <img src="../../images/4-mon.jpg" class="menu-item-thumb" alt="Gói Mix 4 Loại">
+      <img src="../../images/4-mon.png" class="menu-item-thumb" alt="Gói Mix 4 Loại">
       <div class="menu-item-details">
         <div class="menu-item-head">
-          <span class="menu-item-name">Mix 4 Loại Quả</span>
+          <span class="menu-item-name">Mix 4 Khoái Khẩu</span>
           <span class="menu-item-dots"></span>
           <span class="menu-item-price">35.000đ</span>
         </div>
@@ -359,42 +364,44 @@
     </div>
 
     <div class="menu-item">
-      <img src="../../images/5-mon.jpg" class="menu-item-thumb" alt="Gói Mix 5 Loại">
+      <img src="../../images/5-mon.png" class="menu-item-thumb" alt="Gói Mix 5 Loại">
       <div class="menu-item-details">
         <div class="menu-item-head">
-          <span class="menu-item-name">Mix 5 Loại Quả</span>
+          <span class="menu-item-name">Mix 5 Tuyển Chọn</span>
           <span class="menu-item-dots"></span>
           <span class="menu-item-price">40.000đ</span>
         </div>
         <p class="menu-item-desc">Trải nghiệm đầy đủ và đa dạng hương vị nhất từ khay quả tươi của Sành Fruit.</p>
       </div>
     </div>
-
   </div>
-
-  <div class="menu-guide">
-    <h3 class="guide-title">Luồng đặt hàng gửi quý khách</h3>
-    <div class="guide-steps">
-      <div class="guide-step-item"><span>1.</span> <span>Quý khách lựa chọn <strong>Gói Mix 3, 4 hoặc 5 loại quả</strong> tùy theo nhu cầu.</span></div>
-      <div class="guide-step-item"><span>2.</span> <span>Gửi tin nhắn lựa chọn qua một trong hai kênh liên hệ trực tiếp bên dưới.</span></div>
-      <div class="guide-step-item"><span>3.</span> <span>Sành Fruit ghi nhận đơn, xác nhận và thông báo thời gian giao hàng.</span></div>
-      <div class="guide-step-item"><span>4.</span> <span>Hộp trái cây tươi mát được chuẩn bị kỹ lưỡng và giao tận tay quý khách.</span></div>
-    </div>
-  </div>
-
-  <section class="menu-contact">
-    <h3 class="contact-title">Kính mời quý khách nhắn tin đặt hàng tại</h3>
-    <div class="contact-links">
-      <a class="contact-anchor" href="https://zalo.me/0342661892">
-        0342 661 892 <span>(Zalo)</span>
-      </a>
-      <a class="contact-anchor" href="https://www.instagram.com/sanhfruit_mlem?igsh=MXRvdnh5OW8xc2Q2aA==">
-        @sanhfruit_mlem <span>(Instagram)</span>
-      </a>
-    </div>
-  </section>
-
 </main>
+
+<hr class="section-divider">
+
+<section class="menu-guide">
+  <h3 class="guide-title">Luồng đặt hàng gửi quý khách</h3>
+  <div class="guide-steps">
+    <div class="guide-step-item"><span>1.</span> <span>Quý khách lựa chọn <strong>Gói Mix 3, 4 hoặc 5 loại quả</strong> tùy theo nhu cầu.</span></div>
+    <div class="guide-step-item"><span>2.</span> <span>Gửi tin nhắn lựa chọn qua một trong hai kênh liên hệ trực tiếp bên dưới.</span></div>
+    <div class="guide-step-item"><span>3.</span> <span>Sành Fruit ghi nhận đơn, xác nhận và thông báo thời gian giao hàng.</span></div>
+    <div class="guide-step-item"><span>4.</span> <span>Hộp trái cây tươi mát được chuẩn bị kỹ lưỡng và giao tận tay quý khách.</span></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="menu-contact">
+  <h3 class="contact-title">Thương mời quý khách nhắn tin đặt hàng tại</h3>
+  <div class="contact-links">
+    <a class="contact-anchor" href="https://zalo.me/0342661892">
+      0342 661 892 <span>(Zalo)</span>
+    </a>
+    <a class="contact-anchor" href="https://www.instagram.com/sanhfruit_mlem?igsh=MXRvdnh5OW8xc2Q2aA==">
+      @sanhfruit_mlem <span>(Instagram)</span>
+    </a>
+  </div>
+</section>
 
 <footer>
   <strong>Sành <em>Fruit</em></strong>
