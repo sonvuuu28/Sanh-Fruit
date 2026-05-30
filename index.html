@@ -249,7 +249,7 @@
     color: var(--green-dark);
   }
 
-  /* ── KHU VỰC LIÊN HỆ TÁCH BIỆT ──────────────────── */
+  /* ── KHU VỰC LIÊN HỆ ĐƯỢC TỐI ƯU ──────────────────── */
   .menu-contact {
     max-width: 450px;
     margin: 0 auto;
@@ -261,36 +261,67 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     color: var(--green-dark);
-    margin-bottom: 18px;
+    margin-bottom: 22px;
   }
 
   .contact-links {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px; /* Thu hẹp khoảng cách giữa các nút */
     align-items: center;
   }
 
   .contact-anchor {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    color: var(--green-mid);
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px dashed var(--green-mid);
-    padding-bottom: 2px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 280px; /* Khống chế chiều rộng nút vừa vặn */
+    padding: 12px 20px;
+    border-radius: 25px; /* Bo góc tròn mềm mại, sang trọng */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
   }
-  
+
+  /* Thêm hiệu ứng nhấn giữ/bấm cho di động */
+  .contact-anchor:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+
+  /* Nút Zalo phối màu xanh thương hiệu Sành Fruit dịu mắt */
+  .contact-anchor.zalo {
+    background-color: var(--green-mid);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(45, 110, 69, 0.15);
+  }
+
+  /* Nút Instagram phối màu kem ấm để tạo sự tương phản nhẹ */
+  .contact-anchor.instagram {
+    background-color: var(--choice-bg);
+    border: 1px solid var(--choice-bdr);
+    color: var(--green-dark);
+  }
+
+  /* Chữ phụ (Zalo/Instagram) trong nút */
   .contact-anchor span {
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 11px;
     text-transform: uppercase;
-    color: var(--text-muted);
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0.5px;
+    opacity: 0.8;
+  }
+
+  .contact-anchor.zalo span {
+    color: var(--gold-bright); /* Chữ Zalo màu vàng nhẹ nổi bật trên nền xanh */
+  }
+
+  .contact-anchor.instagram span {
+    color: var(--choice-text);
   }
 
   /* ── FOOTER ──────────────────────────────────────── */
@@ -347,7 +378,7 @@
           <span class="menu-item-dots"></span>
           <span class="menu-item-price">30.000đ</span>
         </div>
-        <p class="menu-item-desc">Hộp trái cây thanh nhẹ, quý khách tự chọn kết hợp 3 loại quả yêu thích.</p>
+        <p class="menu-item-desc">Hộp trái cây thanh nhẹ, chọn nhanh ăn gọn.</p>
       </div>
     </div>
 
@@ -359,7 +390,7 @@
           <span class="menu-item-dots"></span>
           <span class="menu-item-price">35.000đ</span>
         </div>
-        <p class="menu-item-desc">Được yêu thích nhất. Hương vị phong phú, hòa quyện trọn vẹn độ giòn ngọt.</p>
+        <p class="menu-item-desc">Lựa chọn cân bằng, đầy đặn. Khéo lựa vị quả, thỏa gu ăn vừa ý.</p>
       </div>
     </div>
 
@@ -394,10 +425,10 @@
 <section class="menu-contact">
   <h3 class="contact-title">Thương mời quý khách nhắn tin đặt hàng tại</h3>
   <div class="contact-links">
-    <a class="contact-anchor" href="https://zalo.me/0342661892">
+    <a class="contact-anchor zalo" href="https://zalo.me/0342661892">
       0342 661 892 <span>(Zalo)</span>
     </a>
-    <a class="contact-anchor" href="https://www.instagram.com/sanhfruit_mlem?igsh=MXRvdnh5OW8xc2Q2aA==">
+    <a class="contact-anchor instagram" href="https://www.instagram.com/sanhfruit_mlem?igsh=MXRvdnh5OW8xc2Q2aA==">
       @sanhfruit_mlem <span>(Instagram)</span>
     </a>
   </div>
