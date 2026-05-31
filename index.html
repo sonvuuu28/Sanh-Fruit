@@ -380,7 +380,6 @@
     </div>
   </section>
 
-  <!-- PHẦN 1: GU TRÁI CÂY CỦA BẠN (DANH SÁCH GÓI MIX) -->
   <main class="menu-wrapper" style="padding-bottom: 0;">
     <h2 class="menu-section-title">Gu Trái Cây Của Bạn</h2>
 
@@ -425,18 +424,17 @@
 
   <hr class="section-divider">
 
-  <!-- PHẦN 2: DANH MỤC TRÁI CÂY HÔM NAY -->
   <section class="menu-guide" style="text-align: center;">
     <h3 class="guide-title" style="font-style: normal; margin-bottom: 10px; color: var(--text-muted);">Danh Mục Trái Cây
       Hôm Nay</h3>
-    <div style="font-size: 15px; color: var(--green-mid); font-weight: 500; letter-spacing: 0.5px;">
+    <div id="trai-cay-hom-nay"
+      style="font-size: 15px; color: var(--green-mid); font-weight: 500; letter-spacing: 0.5px;">
       Ổi · Xoài · Dưa Hấu · Thơm · Thanh Long
     </div>
   </section>
 
   <hr class="section-divider">
 
-  <!-- PHẦN 3: LUỒNG ĐẶT HÀNG -->
   <section class="menu-guide">
     <h3 class="guide-title">Luồng đặt hàng gửi quý khách</h3>
     <div class="guide-steps">
@@ -453,7 +451,6 @@
 
   <hr class="section-divider">
 
-  <!-- PHẦN 4: THƯƠNG MỜI ĐẶT HÀNG -->
   <section class="menu-contact">
     <h3 class="contact-title">Thương mời quý khách nhắn tin đặt hàng tại</h3>
     <div class="contact-links">
@@ -471,6 +468,19 @@
     <p>Nhận đơn từ 7:00 đến 20:00 hàng ngày</p>
     <p style="margin-top: 6px; opacity: 0.5; font-size: 10px;">Trái cây thuần Việt — Tươi mát, tự nhiên, tận tâm</p>
   </footer>
+
+  <script>
+    fetch('./danhmuc.txt')
+      .then(response => response.text())
+      .then(text => {
+        if (text && text.trim().length > 0) {
+          document.getElementById('trai-cay-hom-nay').innerText = text.trim();
+        }
+      })
+      .catch(err => {
+        console.log("Không tìm thấy file danhmuc.txt hoặc lỗi tải, hiển thị danh mục mặc định.");
+      });
+  </script>
 
 </body>
 
